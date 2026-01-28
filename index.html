@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -11,11 +12,9 @@
     --muted:#94a3b8;   /* secondary text */
     --panel:rgba(255,255,255,0.05);
     --border:rgba(255,255,255,0.12);
-    /* One knob to size BOTH lines (#msg and #note) identically */
-    --headline-size: clamp(18px, 2.8vw, 22px);
+    --headline-size: clamp(18px, 2.8vw, 22px); /* controls both lines */
   }
 
-  /* Reset default margins that can cause vertical push */
   *{ box-sizing:border-box }
   html, body{ height:100%; }
 
@@ -25,10 +24,8 @@
     color:var(--text);
     font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
 
-    /* Align near the top instead of perfect center */
+    /* Adjust this first value to move everything up/down */
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-
-    /* Adjust this FIRST value to move everything up/down (bigger = lower on screen) */
     padding:24px 16px;
   }
 
@@ -37,39 +34,50 @@
   .card{
     background:var(--panel);
     border:1px solid var(--border);
-    padding:20px 18px; /* slightly tighter */
+    padding:20px 18px;
     border-radius:14px;
     line-height:1.45;
     box-shadow:0 8px 30px rgba(0,0,0,0.25);
-    text-align:center;               /* ✅ center both lines */
+    text-align:center; /* center both lines */
   }
 
   .title{
-    font-weight:800;
-    letter-spacing:-.01em;
-    margin:0 0 10px;
-    font-size:clamp(18px, 2.4vw, 22px);
+    font-weight:800; letter-spacing:-.01em; margin:0 0 10px; font-size:clamp(18px, 2.4vw, 22px);
   }
 
-  /* Both lines share the exact same typography */
+  /* Both lines match size/weight/spacing */
   #msg, #note{
-    font-size:var(--headline-size);  /* ✅ same size for both lines */
-    font-weight:800;                 /* bold, sign-like */
-    letter-spacing:.02em;            /* slight tracking for legibility */
+    font-size:var(--headline-size);
+    font-weight:800;
+    letter-spacing:.02em;
   }
 
-  /* First line styling (keep as primary text color) */
   #msg{ color:var(--text); }
 
-  /* Second line mimics the first; remove italics and match color/weight */
-  #note{
-    color:var(--text);               /* or set to brand orange: #f37021 */
-    margin-top:8px;
-    font-style:normal;               /* ✅ remove italics */
-    display:block;
-  }
+  /* --- Divider line version (Option 1) --- */
+  .small
+ 
+.card{
+  position:relative;
+}
 
-  /* Optional: reduce space further on very small screens */
+/* Narrow centered rule above #note */
+#note{
+  position:relative;
+  margin-top:16px;
+  padding-top:12px;
+  font-style:normal;
+}
+#note::before{
+  content:"";
+  display:block;
+  width:60%;
+  height:1px;
+  margin:0 auto 10px;                     /* centers the rule */
+  background:linear-gradient(90deg, transparent, rgba(229,231,235,0.5), transparent);
+}
+
+
   @media (max-height: 600px){
     body{ padding-top:40px; }
     .card{ padding:16px 14px; }
@@ -145,10 +153,9 @@
   ];
 
   function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-
-  // Populate the two lines
   document.getElementById('msg').textContent = pick(MESSAGES);
   document.getElementById('note').textContent = pick(NOTES);
 </script>
 </body>
 </html>
+``
