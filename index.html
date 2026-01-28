@@ -4,62 +4,83 @@
 <head>
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>Out of Office Message</title>
+<title>Away From Desk Message</title>
 <style>
+  :root{
+    --bg:#0f172a;      /* background */
+    --text:#e5e7eb;    /* primary text */
+    --muted:#94a3b8;   /* secondary text */
+    --panel:rgba(255,255,255,0.05);
+    --border:rgba(255,255,255,0.12);
+  }
+  /* Reset default margins that can cause vertical push */
+  *{box-sizing:border-box}
+  html, body{ height:100%; }
   body{
     margin:0;
-    background:#0f172a;
-    color:#e5e7eb;
-    font-family:system-ui, sans-serif;
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
-    height:100vh;
-    text-align:center;
-    padding:20px;
+    background:var(--bg);
+    color:var(--text);
+    font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    /* Align near the top instead of perfect center */
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    padding:24px 16px; /* smaller top padding to remove extra space */
   }
+  .wrap{ width:min(680px, 92vw); }
   .card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.12);
-    padding:30px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    padding:20px 18px; /* slightly tighter */
     border-radius:14px;
-    max-width:600px;
-    line-height:1.5;
-    box-shadow:0 0 30px rgba(0,0,0,0.3);
+    line-height:1.45;
+    box-shadow:0 8px 30px rgba(0,0,0,0.25);
   }
-  .small{ color:#94a3b8; margin-top:10px; font-size:14px; font-style:italic; }
+  .title{
+    font-weight:800; letter-spacing:-.01em; margin:0 0 10px; font-size:clamp(18px, 2.4vw, 22px);
+  }
+  #msg{ font-size:clamp(18px, 2.8vw, 22px); }
+  .small{ color:var(--muted); margin-top:8px; font-size:14px; font-style:italic; }
+
+  /* Optional: reduce space further on very small screens */
+  @media (max-height: 600px){
+    body{ padding-top:12px; }
+    .card{ padding:16px 14px; }
+  }
 </style>
 </head>
 <body>
-<div class='card'>
-  <div id='msg'>Loading...</div>
-  <div class='small' id='note'></div>
-</div>
+  <div class='wrap'>
+    <!-- Optional title; comment out if not desired -->
+    <!-- <h1 class='title'>Away from Desk</h1> -->
+    <div class='card'>
+      <div id='msg'>Loading...</div>
+      <div class='small' id='note'></div>
+    </div>
+  </div>
 
 <script>
-  const OOO = [
-    "I’m out of office and into adventure. I’ll reply upon reentry.",
-    "Currently out—gathering field data on the effects of not checking email.",
-    "Away now; responses may travel at scenic‑route speeds.",
-    "I’m out and about—email signal currently set to ‘gentle whisper’.",
-    "Out of office, likely near coffee. I’ll respond when I wander back.",
-    "Exploring the wilderness beyond the inbox. I’ll report back soon.",
-    "Currently unavailable; my attention is on sunshine, snacks, or both.",
-    "I’ve stepped away—response times may be fashionably delayed.",
-    "Out of office and trusting the inbox to behave itself.",
-    "Venturing afar; replies may arrive like postcards—pleasantly delayed."
+  const MESSAGES = [
+    "Just stepped away from my desk—on a small quest of unknown duration.",
+    "I’ve wandered briefly—likely in search of coffee or clarity.",
+    "Away from my desk for a moment; I shall return with renewed vigor.",
+    "Currently not at my desk—possibly mid‑adventure within the office realm.",
+    "I’m nearby but not docked at my desk. I’ll be back shortly.",
+    "Stepped away for a spell; I’ll reappear soon.",
+    "On a tiny expedition—desk unattended but spirit present.",
+    "I’m momentarily roaming; I’ll return as soon as the winds permit.",
+    "Away from desk, but not from duty—back momentarily.",
+    "Engaged in a brief detour; desk will reclaim me soon."
   ];
 
   const NOTES = [
     "If the winds of whimsy allow, try peeking again later.",
-    "Should the stars realign, a new message may appear upon your return.",
-    "Check back later—perhaps the page will conjure a new delight.",
-    "Return at a later moment; the muse may whisper a fresh line.",
-    "Come back when the digital breeze feels right—another message awaits."
+    "Should the stars realign, you may find me returned upon the next visit.",
+    "Check back later—perhaps I shall have rematerialized.",
+    "Return at a later moment; the muse may guide me back to my desk.",
+    "Come back when the digital breeze feels right—my return may await you."
   ];
 
   function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-  document.getElementById('msg').textContent = pick(OOO);
+  document.getElementById('msg').textContent = pick(MESSAGES);
   document.getElementById('note').textContent = pick(NOTES);
 </script>
 </body>
