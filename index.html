@@ -26,7 +26,7 @@
 
     /* Adjust this first value to move everything up/down */
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-    padding:24px 16px;
+    padding:36px 16px;
   }
 
   .wrap{ width:min(680px, 92vw); }
@@ -130,26 +130,25 @@
   ];
 
   const NOTES = [
-    "Check again later—my status may have finished buffering.",
-    "Try back shortly—my location services are recalibrating.",
-    "Please retry in a bit—system processes still syncing.",
-    "Check again soon—my status is pending a refresh cycle.",
-    "Revisit later—current availability is in low‑power mode.",
-    "Return soon—my coordinates are updating in real time.",
-    "Try again later—still running a quick diagnostic.",
-    "Check back shortly—my position is converging toward the desk.",
-    "Revisit in a moment—system stability increasing.",
+
+    "Try again soon—my status is pending a refresh cycle.",
+    "Try again soon—my position is converging toward the desk.",
     "Try again soon—calculations suggest a high probability of return.",
-    "Look back later—situation may have auto‑corrected by then.",
-    "Try again soon—desk occupancy status is still compiling.",
-    "Check again later—manual override may complete shortly.",
-    "Revisit shortly—my availability is in the middle of a rebuild.",
-    "Try again later—my return ETA is currently updating.",
-    "Try again in a bit—availability is awaiting internal acknowledgment.",
-    "Recheck shortly—return window currently under review.",
-    "Check back later—my ETA is being recalculated due to unknown variables.",
-    "Try again soon—status pending internal routing.",
-    "Please check back later—response time is experiencing light variability."
+    "Try again soon—my return ETA is currently updating.",
+    "Try again soon—availability is awaiting acknowledgment.",
+    "Try again soon—my ETA is being recalculated due to unknown variables.",
+    "Try again soon—status pending internal work definition."
+/*    "Please retry in a bit—system processes still syncing.", */
+/*    "Revisit in a moment—system stability increasing.", */
+/*    "Look back later—situation may have auto‑corrected by then.", */
+/*    "Try again soon—desk occupancy status is still compiling.", */
+/*    "Check again later—manual override may complete shortly.", */
+/*    "Recheck shortly—return window currently under review.", */
+/*    "Check again later—my status may have finished buffering.", */
+/*    "Please check back later—response time is experiencing light variability." */
+/*    "Revisit later—current availability is in low‑power mode.", */
+/*    "Return soon—my coordinates are updating in real time.", */
+/*    "Try again later—still running a quick diagnostic.", */
   ];
 
   function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
