@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -12,20 +11,29 @@
     --muted:#94a3b8;   /* secondary text */
     --panel:rgba(255,255,255,0.05);
     --border:rgba(255,255,255,0.12);
+    /* One knob to size BOTH lines (#msg and #note) identically */
+    --headline-size: clamp(18px, 2.8vw, 22px);
   }
+
   /* Reset default margins that can cause vertical push */
-  *{box-sizing:border-box}
+  *{ box-sizing:border-box }
   html, body{ height:100%; }
+
   body{
     margin:0;
     background:var(--bg);
     color:var(--text);
     font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+
     /* Align near the top instead of perfect center */
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-    padding:24px 16px; /* smaller top padding to remove extra space */
+
+    /* Adjust this FIRST value to move everything up/down (bigger = lower on screen) */
+    padding:24px 16px;
   }
+
   .wrap{ width:min(680px, 92vw); }
+
   .card{
     background:var(--panel);
     border:1px solid var(--border);
@@ -33,12 +41,33 @@
     border-radius:14px;
     line-height:1.45;
     box-shadow:0 8px 30px rgba(0,0,0,0.25);
+    text-align:center;               /* ✅ center both lines */
   }
+
   .title{
-    font-weight:800; letter-spacing:-.01em; margin:0 0 10px; font-size:clamp(18px, 2.4vw, 22px);
+    font-weight:800;
+    letter-spacing:-.01em;
+    margin:0 0 10px;
+    font-size:clamp(18px, 2.4vw, 22px);
   }
-  #msg{ font-size:clamp(18px, 2.8vw, 22px); }
-  .small{ color:var(--muted); margin-top:8px; font-size:14px; font-style:italic; }
+
+  /* Both lines share the exact same typography */
+  #msg, #note{
+    font-size:var(--headline-size);  /* ✅ same size for both lines */
+    font-weight:800;                 /* bold, sign-like */
+    letter-spacing:.02em;            /* slight tracking for legibility */
+  }
+
+  /* First line styling (keep as primary text color) */
+  #msg{ color:var(--text); }
+
+  /* Second line mimics the first; remove italics and match color/weight */
+  #note{
+    color:var(--text);               /* or set to brand orange: #f37021 */
+    margin-top:8px;
+    font-style:normal;               /* ✅ remove italics */
+    display:block;
+  }
 
   /* Optional: reduce space further on very small screens */
   @media (max-height: 600px){
@@ -49,7 +78,7 @@
 </head>
 <body>
   <div class='wrap'>
-    <!-- Optional title; comment out if not desired -->
+    <!-- Optional title; uncomment if desired -->
     <!-- <h1 class='title'>Away from Desk</h1> -->
     <div class='card'>
       <div id='msg'>Loading...</div>
@@ -64,7 +93,7 @@
     "I’m nearby but not docked at my desk. I’ll be back shortly.",
     "I’m momentarily roaming; I’ll return as soon as the winds permit.",
     "Away from desk, but not from duty—back momentarily.",
-    "Engaged in a brief detour; desk will reclaim me soon.", 
+    "Engaged in a brief detour; desk will reclaim me soon.",
     "Temporarily away—running a quick human firmware update.",
     "Stepped out to recalibrate my internal sensors; returning shortly.",
     "In the field gathering empirical data (probably about snacks).",
@@ -89,16 +118,14 @@
     "Momentarily diverted to resolve a high‑priority variable: hunger.",
     "Testing alternative workflows: primarily standing and wandering.",
     "Performing a Level‑0 inspection of the surroundings.",
-    "Temporarily AFK—returning once stamina regenerates.",
-    
-
+    "Temporarily AFK—returning once stamina regenerates."
   ];
 
   const NOTES = [
     "Check again later—my status may have finished buffering.",
     "Try back shortly—my location services are recalibrating.",
     "Please retry in a bit—system processes still syncing.",
-    "Check again soon—my status is pending a refresh cycle.",    
+    "Check again soon—my status is pending a refresh cycle.",
     "Revisit later—current availability is in low‑power mode.",
     "Return soon—my coordinates are updating in real time.",
     "Try again later—still running a quick diagnostic.",
@@ -114,10 +141,12 @@
     "Recheck shortly—return window currently under review.",
     "Check back later—my ETA is being recalculated due to unknown variables.",
     "Try again soon—status pending internal routing.",
-    "Please check back later—response time is experiencing light variability.",
+    "Please check back later—response time is experiencing light variability."
   ];
 
   function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+  // Populate the two lines
   document.getElementById('msg').textContent = pick(MESSAGES);
   document.getElementById('note').textContent = pick(NOTES);
 </script>
