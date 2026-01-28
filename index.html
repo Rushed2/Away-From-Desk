@@ -42,7 +42,7 @@
 
   /* Optional: reduce space further on very small screens */
   @media (max-height: 600px){
-    body{ padding-top:24px; }
+    body{ padding-top:40px; }
     .card{ padding:16px 14px; }
   }
 </style>
@@ -59,24 +59,62 @@
 
 <script>
   const MESSAGES = [
-    "Just stepped away from my desk—on a small quest of unknown duration.",
     "I’ve wandered briefly—likely in search of coffee or clarity.",
     "Away from my desk for a moment; I shall return with renewed vigor.",
-    "Currently not at my desk—possibly mid‑adventure within the office realm.",
     "I’m nearby but not docked at my desk. I’ll be back shortly.",
-    "Stepped away for a spell; I’ll reappear soon.",
-    "On a tiny expedition—desk unattended but spirit present.",
     "I’m momentarily roaming; I’ll return as soon as the winds permit.",
     "Away from desk, but not from duty—back momentarily.",
-    "Engaged in a brief detour; desk will reclaim me soon."
+    "Engaged in a brief detour; desk will reclaim me soon.", 
+    "Temporarily away—running a quick human firmware update.",
+    "Stepped out to recalibrate my internal sensors; returning shortly.",
+    "In the field gathering empirical data (probably about snacks).",
+    "Momentarily offline—attempting a soft reboot in the hallway.",
+    "Currently operating in roam mode; desk docking sequence pending.",
+    "Debugging life’s minor anomalies; back once patched.",
+    "Executing a spontaneous field test; results pending.",
+    "I’ve wandered off to optimize my workflow… or find a pen.",
+    "Stepped away—tracking down a lead time in its natural habitat.",
+    "Away from desk securing a verbal acknowledgment from reality.",
+    "Off checking if the universe can expedite anything today.",
+    "Temporarily visiting Supplier: Break Room, Inc.",
+    "Investigating a possible discrepancy: my chair is empty.",
+    "Conducting a rapid cycle count of available caffeine levels.",
+    "Doing on‑site research to confirm whether snacks are in stock.",
+    "Verifying if time itself will accept a change order.",
+    "Currently out testing load capacity: can I carry all these tasks? TBD.",
+    "Stepped away—performing root‑cause analysis on why I stood up.",
+    "On a brief excursion to validate a real‑world prototype: me, walking.",
+    "Running a short simulation—results should converge soon.",
+    "Conducting a field audit: Location = Not Desk.",
+    "Momentarily diverted to resolve a high‑priority variable: hunger.",
+    "Testing alternative workflows: primarily standing and wandering.",
+    "Performing a Level‑0 inspection of the surroundings.",
+    "Temporarily AFK—returning once stamina regenerates.",
+    
+
   ];
 
   const NOTES = [
-    "If the winds of whimsy allow, try peeking again later.",
-    "Should the stars realign, you may find me returned upon the next visit.",
-    "Check back later—perhaps I shall have rematerialized.",
-    "Return at a later moment; the muse may guide me back to my desk.",
-    "Come back when the digital breeze feels right—my return may await you."
+    "Check again later—my status may have finished buffering.",
+    "Try back shortly—my location services are recalibrating.",
+    "Please retry in a bit—system processes still syncing.",
+    "Check again soon—my status is pending a refresh cycle.",    
+    "Revisit later—current availability is in low‑power mode.",
+    "Return soon—my coordinates are updating in real time.",
+    "Try again later—still running a quick diagnostic.",
+    "Check back shortly—my position is converging toward the desk.",
+    "Revisit in a moment—system stability increasing.",
+    "Try again soon—calculations suggest a high probability of return.",
+    "Look back later—situation may have auto‑corrected by then.",
+    "Try again soon—desk occupancy status is still compiling.",
+    "Check again later—manual override may complete shortly.",
+    "Revisit shortly—my availability is in the middle of a rebuild.",
+    "Try again later—my return ETA is currently updating.",
+    "Try again in a bit—availability is awaiting internal acknowledgment.",
+    "Recheck shortly—return window currently under review.",
+    "Check back later—my ETA is being recalculated due to unknown variables.",
+    "Try again soon—status pending internal routing.",
+    "Please check back later—response time is experiencing light variability.",
   ];
 
   function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
